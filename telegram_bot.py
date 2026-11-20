@@ -72,7 +72,7 @@ def redactar(texto):
     Telegram lleva el token dentro."""
     texto = str(texto)
     for secreto in (TOKEN, NEWS_API_KEY):
-        if secreto:
+        if secreto and len(secreto) >= 8:   # evita tapar letras sueltas
             texto = texto.replace(secreto, "***")
     return texto
 
@@ -143,12 +143,13 @@ MIN_TOKENS_FIRMA = 4            # debajo de esto no se deduplica por titulo
 # --- Formato y Telegram ----------------------------------------------------
 MAX_LARGO_TITULO = 250
 MAX_LARGO_DESCRIPCION = 900
-LIMITE_TELEGRAM = 4096
+LIMITE_CAPTION = 1024          # limite de Telegram para el texto de una foto
+TEXTO_ENLACE = "🔗 Ver noticia completa"
 PAUSA_ENTRE_MENSAJES = 3.0      # canales/grupos: ~20 mensajes/minuto
 MAX_REINTENTOS_TELEGRAM = 3
 MAX_REINTENTOS_NEWSAPI = 2
 
-URL_TELEGRAM = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+URL_TELEGRAM_API = f"https://api.telegram.org/bot{TOKEN}"
 URL_NEWSAPI = "https://newsapi.org/v2/everything"
 
 # ---------------------------------------------------------------------------
@@ -193,22 +194,24 @@ QUERY_GEOPOLITICA = (
     "Taiwan OR NATO OR \"trade war\" OR energy)"
 )
 
+# Las categorias solo controlan QUE noticias se eligen y cuantas de cada
+# tema; no se muestran en el mensaje.
 # Orden = prioridad de seleccion y orden de publicacion.
 # cupo:    lugares garantizados por corrida.
 # relleno: si alguna categoria no llena su cupo, las marcadas con
 #          relleno=True reparten los lugares sobrantes (round-robin).
 CATEGORIAS = [
-    {"etiqueta": "IRAN", "emoji": "🇮🇷", "query": QUERY_IRAN,
+    {"etiqueta": "IRAN", "query": QUERY_IRAN,
      "dominios": DOMINIOS_GENERALES, "page_size": 15, "cupo": 1, "relleno": False},
-    {"etiqueta": "TRUMP", "emoji": "🇺🇸", "query": QUERY_TRUMP,
+    {"etiqueta": "TRUMP", "query": QUERY_TRUMP,
      "dominios": DOMINIOS_GENERALES, "page_size": 15, "cupo": 1, "relleno": False},
-    {"etiqueta": "FINANZAS", "emoji": "📈", "query": QUERY_FINANZAS,
+    {"etiqueta": "FINANZAS", "query": QUERY_FINANZAS,
      "dominios": DOMINIOS_FINANZAS, "page_size": 30, "cupo": 3, "relleno": True},
-    {"etiqueta": "CRIPTO", "emoji": "₿", "query": QUERY_CRIPTO,
+    {"etiqueta": "CRIPTO", "query": QUERY_CRIPTO,
      "dominios": DOMINIOS_CRIPTO, "page_size": 30, "cupo": 3, "relleno": True},
-    {"etiqueta": "TECNOLOGIA", "emoji": "💻", "query": QUERY_TECNOLOGIA,
+    {"etiqueta": "TECNOLOGIA", "query": QUERY_TECNOLOGIA,
      "dominios": DOMINIOS_TECNOLOGIA, "page_size": 25, "cupo": 2, "relleno": True},
-    {"etiqueta": "GEOPOLITICA", "emoji": "🌍", "query": QUERY_GEOPOLITICA,
+    {"etiqueta": "GEOPOLITICA", "query": QUERY_GEOPOLITICA,
      "dominios": DOMINIOS_GENERALES, "page_size": 25, "cupo": 2, "relleno": True},
 ]
 
@@ -494,29 +497,20 @@ def obtener_noticias(query, dominios, page_size=20):
 # ---------------------------------------------------------------------------
 
 
-def enviar_telegram(texto):
-    """Retorna True solo si Telegram confirma la entrega.
+def _llamar_telegram(metodo, datos):
+    """Llama a la Bot API. Devuelve (ok, status_code, descripcion).
     Respeta 'retry_after' en 429 y reintenta errores 5xx/red."""
-    if DRY_RUN:
-        print("\n" + "-" * 70 + "\n" + texto)
-        return True
-
-    datos = {
-        "chat_id": CHAT_ID,
-        "text": texto,
-        "parse_mode": "HTML",
-        "link_preview_options": json.dumps({"is_disabled": True}),
-    }
+    url = f"{URL_TELEGRAM_API}/{metodo}"
 
     for intento in range(1, MAX_REINTENTOS_TELEGRAM + 1):
         try:
-            response = requests.post(URL_TELEGRAM, data=datos, timeout=20)
+            response = requests.post(url, data=datos, timeout=30)
         except requests.exceptions.RequestException as error:
-            log.warning(f"Telegram error de red (intento {intento}): {error}")
+            log.warning(f"Telegram {metodo} error de red (intento {intento}): {error}")
             if intento < MAX_REINTENTOS_TELEGRAM:
                 time.sleep(2 * intento)
                 continue
-            return False
+            return False, None, str(error)
 
         try:
             payload = response.json()
@@ -524,7 +518,7 @@ def enviar_telegram(texto):
             payload = {}
 
         if response.status_code == 200 and payload.get("ok"):
-            return True
+            return True, 200, ""
 
         if response.status_code == 429 and intento < MAX_REINTENTOS_TELEGRAM:
             espera = (payload.get("parameters") or {}).get("retry_after", 5)
@@ -534,16 +528,68 @@ def enviar_telegram(texto):
             continue
 
         if response.status_code >= 500 and intento < MAX_REINTENTOS_TELEGRAM:
-            log.warning(f"Telegram HTTP {response.status_code} (intento {intento}), "
-                        f"reintentando...")
+            log.warning(f"Telegram {metodo} HTTP {response.status_code} "
+                        f"(intento {intento}), reintentando...")
             time.sleep(2 * intento)
             continue
 
-        descripcion = payload.get("description") or response.text[:300]
-        log.error(f"Telegram error HTTP {response.status_code}: {descripcion}")
-        return False
+        return False, response.status_code, payload.get("description") or response.text[:300]
 
-    return False
+    return False, None, "reintentos agotados"
+
+
+def enviar_texto(texto, preview_url=None):
+    """Envia un mensaje de texto. Con preview_url, Telegram muestra la
+    vista previa de esa pagina (normalmente con su imagen principal)."""
+    if DRY_RUN:
+        print("\n" + "-" * 70 + "\n" + texto)
+        return True
+
+    if preview_url:
+        preview = {"url": preview_url, "prefer_large_media": True,
+                   "show_above_text": True}
+    else:
+        preview = {"is_disabled": True}
+
+    ok, status, descripcion = _llamar_telegram("sendMessage", {
+        "chat_id": CHAT_ID,
+        "text": texto,
+        "parse_mode": "HTML",
+        "link_preview_options": json.dumps(preview),
+    })
+    if not ok:
+        log.error(f"Telegram sendMessage fallo (HTTP {status}): {descripcion}")
+    return ok
+
+
+def enviar_noticia(noticia):
+    """Envia la noticia como foto con texto al pie. Si no hay imagen o
+    Telegram la rechaza (URL caida, formato o tamano no valido), la envia
+    como texto con la vista previa del enlace.
+
+    Solo se recurre al texto ante un rechazo definitivo (HTTP 400): ante un
+    error de red la foto pudo haberse entregado y reenviar la duplicaria."""
+    if DRY_RUN:
+        print("\n" + "-" * 70)
+        print(f"[IMAGEN] {noticia['imagen'] or '(sin imagen: vista previa del enlace)'}")
+        print(noticia["mensaje"])
+        return True
+
+    if noticia["imagen"]:
+        ok, status, descripcion = _llamar_telegram("sendPhoto", {
+            "chat_id": CHAT_ID,
+            "photo": noticia["imagen"],
+            "caption": noticia["mensaje"],
+            "parse_mode": "HTML",
+        })
+        if ok:
+            return True
+        if status != 400:
+            log.error(f"Telegram sendPhoto fallo (HTTP {status}): {descripcion}")
+            return False
+        log.warning(f"Telegram rechazo la imagen ({descripcion}); se envia sin foto.")
+
+    return enviar_texto(noticia["mensaje"], preview_url=noticia["link"])
 
 
 # ---------------------------------------------------------------------------
@@ -551,36 +597,63 @@ def enviar_telegram(texto):
 # ---------------------------------------------------------------------------
 
 
-def construir_mensaje(categoria, titulo_es, descripcion_es, link, fuente):
-    """Arma el HTML del mensaje. Se escapa DESPUES de recortar, nunca se
-    corta HTML ya escapado (evita etiquetas o entidades partidas)."""
-    encabezado = f"{categoria['emoji']} <i>{html.escape(categoria['etiqueta'])}</i>"
-    if fuente:
-        encabezado += f" · {html.escape(fuente)}"
+def limpiar_texto(texto):
+    """Quita HTML, entidades y saltos de linea: deja un solo parrafo."""
+    texto = html.unescape(texto or "")
+    texto = re.sub(r"<[^>]+>", " ", texto)
+    texto = re.sub(r"\s+", " ", texto)
+    return texto.strip()
 
-    titulo_html = (f'<b><a href="{html.escape(link, quote=True)}">'
-                   f'{html.escape(titulo_es)}</a></b>')
 
-    cuerpo = (html.escape(descripcion_es) if descripcion_es
-              else "<i>Sin descripcion disponible.</i>")
+def recortar_parrafo(texto, maximo):
+    """Recorta preferentemente al final de una oracion; si no hay una
+    razonablemente cerca del limite, en el ultimo espacio con '...'."""
+    if not texto or len(texto) <= maximo:
+        return texto
+    corte = texto[:maximo]
+    fin = max(corte.rfind(". "), corte.rfind("! "), corte.rfind("? "))
+    if fin > maximo * 0.5:
+        return corte[:fin + 1]
+    return recortar(texto, maximo - 3)
 
-    mensaje = f"{encabezado}\n{titulo_html}\n\n{cuerpo}"
 
-    if len(mensaje) > LIMITE_TELEGRAM:
-        mensaje = f"{encabezado}\n{titulo_html}"
+def url_imagen(articulo):
+    url = (articulo.get("urlToImage") or "").strip()
+    if url.startswith("//"):
+        url = "https:" + url
+    return url if url.startswith(("http://", "https://")) else ""
 
-    return mensaje
+
+def construir_mensaje(titulo_es, resumen_es, link):
+    """Titulo + resumen de un parrafo + enlace.
+
+    Debe caber en el texto al pie de una foto (1024 caracteres visibles):
+    el resumen se ajusta al espacio que dejan el titulo y el enlace. Se
+    recorta el texto plano ANTES de escapar, nunca el HTML."""
+    presupuesto = (LIMITE_CAPTION - len(titulo_es) - len(TEXTO_ENLACE)
+                   - 4      # dos separadores "\n\n"
+                   - 10)    # margen
+    partes = [f"<b>{html.escape(titulo_es)}</b>"]
+    if resumen_es and presupuesto > 80:
+        partes.append(html.escape(recortar_parrafo(resumen_es, presupuesto)))
+    partes.append(f'<a href="{html.escape(link, quote=True)}">{TEXTO_ENLACE}</a>')
+    return "\n\n".join(partes)
 
 
 def preparar_noticia(articulo, categoria):
     """Traduce y arma el mensaje. Devuelve None si no es publicable."""
-    titulo = (articulo.get("title") or "").strip()
-    descripcion = (articulo.get("description") or "").strip()
+    titulo = limpiar_texto(articulo.get("title"))
     link = (articulo.get("url") or "").strip()
-    fuente = ((articulo.get("source") or {}).get("name") or "").strip()
+
+    # Resumen: la descripcion del articulo. Si viene vacia, el inicio del
+    # contenido (NewsAPI lo corta y agrega '[+1234 chars]').
+    resumen = limpiar_texto(articulo.get("description"))
+    if not resumen:
+        contenido = limpiar_texto(articulo.get("content"))
+        resumen = re.sub(r"\s*\[\+\d+ chars\]$", "", contenido)
 
     titulo_src = recortar(titulo, MAX_LARGO_TITULO)
-    descripcion_src = recortar(descripcion, MAX_LARGO_DESCRIPCION)
+    resumen_src = recortar_parrafo(resumen, MAX_LARGO_DESCRIPCION)
 
     try:
         titulo_es = traducir_estricto(titulo_src)
@@ -588,22 +661,23 @@ def preparar_noticia(articulo, categoria):
         log.warning(f"DESCARTADA (titulo sin traducir): {titulo_src[:70]} | {error}")
         return None
 
-    descripcion_es = ""
-    if descripcion_src:
+    resumen_es = ""
+    if resumen_src:
         try:
-            descripcion_es = traducir_estricto(descripcion_src)
+            resumen_es = limpiar_texto(traducir_estricto(resumen_src))
         except TraduccionFallida as error:
             if EXIGIR_DESCRIPCION_TRADUCIDA:
-                log.warning(f"DESCARTADA (descripcion sin traducir): "
+                log.warning(f"DESCARTADA (resumen sin traducir): "
                             f"{titulo_src[:70]} | {error}")
                 return None
-            log.warning("Descripcion sin traducir; se publica solo el titulo.")
+            log.warning("Resumen sin traducir; se publica solo el titulo.")
 
     return {
         "etiqueta": categoria["etiqueta"],
         "link": link,
+        "imagen": url_imagen(articulo),
         "titulo_original": titulo,
-        "mensaje": construir_mensaje(categoria, titulo_es, descripcion_es, link, fuente),
+        "mensaje": construir_mensaje(limpiar_texto(titulo_es), resumen_es, link),
     }
 
 
@@ -800,18 +874,9 @@ def rellenar(selector, resultados, lote):
     return lote
 
 
-def construir_encabezado(lote):
+def construir_encabezado():
     fecha = fecha_local().strftime("%d/%m/%Y")
-    conteo = {}
-    for noticia in lote:
-        conteo[noticia["etiqueta"]] = conteo.get(noticia["etiqueta"], 0) + 1
-
-    lineas = [
-        f"{c['emoji']} {c['etiqueta'].capitalize()}: {conteo[c['etiqueta']]}"
-        for c in CATEGORIAS if c["etiqueta"] in conteo
-    ]
-    return (f"<b>🌐 GLOBAL NEWS</b>\n<b>{fecha}</b> · {len(lote)} noticias\n\n"
-            + "\n".join(lineas))
+    return f"<b>🌐 GLOBAL NEWS</b>\n<b>{fecha}</b>"
 
 
 def main():
@@ -875,7 +940,7 @@ def main():
         return 1 if (errores_api or selector.traductor_caido) else 0
 
     # --- Envio -----------------------------------------------------------
-    if not enviar_telegram(construir_encabezado(lote)):
+    if not enviar_texto(construir_encabezado()):
         log.error("No se pudo enviar el encabezado; se aborta sin tocar el historial.")
         return 1
 
@@ -886,7 +951,7 @@ def main():
         if not DRY_RUN:
             time.sleep(PAUSA_ENTRE_MENSAJES)
 
-        if enviar_telegram(noticia["mensaje"]):
+        if enviar_noticia(noticia):
             historial.registrar(noticia["link"], noticia["tokens"])
             if not DRY_RUN:
                 # Guardado incremental: si el job muere a mitad, lo ya
