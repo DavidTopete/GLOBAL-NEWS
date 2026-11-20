@@ -550,7 +550,7 @@ def pausa_telegram():
 
 def enviar_texto(texto, preview_url=None):
     """Envia un mensaje de texto. Devuelve el message_id, o None si fallo.
-    Con preview_url, Telegram muestra arriba del texto la vista previa de
+    Con preview_url, Telegram muestra debajo del texto la vista previa de
     esa pagina (normalmente con su imagen principal)."""
     if DRY_RUN:
         print("\n" + texto)
@@ -558,7 +558,7 @@ def enviar_texto(texto, preview_url=None):
 
     if preview_url:
         preview = {"url": preview_url, "prefer_large_media": True,
-                   "show_above_text": True}
+                   "show_above_text": False}
     else:
         preview = {"is_disabled": True}
 
@@ -577,17 +577,17 @@ def enviar_texto(texto, preview_url=None):
 def enviar_noticia(noticia):
     """Publica la noticia en UN SOLO mensaje:
 
-        [ imagen ]
         Titulo
         Resumen de un parrafo
         Enlace
+        [ imagen ]
 
     Telegram no permite intercalar una imagen entre bloques de texto: en un
-    mensaje con foto todo el texto va debajo (o todo arriba). Por eso la
-    imagen encabeza el mensaje y el resto va como texto al pie.
+    mensaje con foto todo el texto va debajo o todo arriba. Con
+    show_caption_above_media el texto va arriba y la imagen al final.
 
     Si no hay imagen o Telegram la rechaza (HTTP 400), se envia como texto
-    con la vista previa del enlace ARRIBA, manteniendo el mismo orden.
+    con la vista previa del enlace DEBAJO, manteniendo el mismo orden.
     Ante un error de red NO se reenvia: la foto pudo haberse entregado y
     se duplicaria."""
     if DRY_RUN:
@@ -602,6 +602,7 @@ def enviar_noticia(noticia):
             "photo": noticia["imagen"],
             "caption": noticia["mensaje"],
             "parse_mode": "HTML",
+            "show_caption_above_media": "true",   # texto arriba, imagen abajo
         })
         if ok:
             return True
