@@ -48,7 +48,19 @@
     "https://theverge.com/ai-artificial-intelligence/1037459/anthropic-ipo-safe-ai-reputation-power-structure": 1795209981,
     "https://theverge.com/tech/1037535/google-blue-origin-project-suncatcher-2029": 1795209985,
     "https://bbc.com/news/articles/cm9q84gp0gr3o": 1795209989,
-    "https://bbc.com/sport/rugby-union/articles/crq5vzdyzqpzo": 1795209993
+    "https://bbc.com/sport/rugby-union/articles/crq5vzdyzqpzo": 1795209993,
+    "https://bbc.com/news/articles/cq808vzd3nnpo": 1795210134,
+    "https://bloomberg.com/news/articles/2026-11-19/trump-warns-against-regulations-that-would-stifle-ai-industry": 1795210137,
+    "https://cnbc.com/2026/11/19/anthropic-lifts-nasdaq-futures-and-tech-stocks-ahead-of-its-record-breaking-ipo.html": 1795210142,
+    "https://cnbc.com/2026/11/19/anthropic-ipo-could-create-thousands-of-multimillionaire-employees.html": 1795210145,
+    "https://cnbc.com/2026/11/19/stocks-moving-the-most-today-live-updates.html": 1795210149,
+    "https://cointelegraph.com/markets/bitcoin-etf-assets-three-month-low-78-billion": 1795210152,
+    "https://cointelegraph.com/news/btcpay-server-emergency-update-nginx-security-flaws": 1795210156,
+    "https://cointelegraph.com/markets/bitcoin-retests-62k-nasdaq-futures-anthropic-debut": 1795210159,
+    "https://theverge.com/podcast/1036484/jon-favreau-pod-save-america-offline-crooked-media-trump-big-tech-ai-2028-election": 1795210163,
+    "https://bloomberg.com/news/articles/2026-11-19/india-startup-sells-deepseek-access-while-pursuing-sovereign-ai": 1795210166,
+    "https://bbc.com/news/articles/c5n4em9mkkzeo": 1795210170,
+    "https://bbc.com/news/articles/cw62p3y3rg5ro": 1795210174
   },
   "titulos": [
     {
@@ -715,6 +727,169 @@
         "wales"
       ],
       "ts": 1795209993
+    },
+    {
+      "tokens": [
+        "against",
+        "any",
+        "iranian",
+        "plot",
+        "seriously",
+        "taking",
+        "trump",
+        "us",
+        "very",
+        "washington"
+      ],
+      "ts": 1795210134
+    },
+    {
+      "tokens": [
+        "ai",
+        "development",
+        "intelligence",
+        "opposes",
+        "regulation",
+        "robust",
+        "stifle",
+        "super",
+        "trump",
+        "would"
+      ],
+      "ts": 1795210137
+    },
+    {
+      "tokens": [
+        "ahead",
+        "anthropic",
+        "breaking",
+        "futures",
+        "ipo",
+        "lifts",
+        "nasdaq",
+        "record",
+        "stocks",
+        "tech"
+      ],
+      "ts": 1795210142
+    },
+    {
+      "tokens": [
+        "anthropic",
+        "create",
+        "employees",
+        "ipo",
+        "multimillionaire",
+        "thousands"
+      ],
+      "ts": 1795210145
+    },
+    {
+      "tokens": [
+        "live",
+        "most",
+        "moving",
+        "stocks",
+        "today",
+        "updates"
+      ],
+      "ts": 1795210149
+    },
+    {
+      "tokens": [
+        "2",
+        "2026",
+        "5b",
+        "assets",
+        "bitcoin",
+        "etf",
+        "fall",
+        "low",
+        "month",
+        "net",
+        "outflows",
+        "three",
+        "top"
+      ],
+      "ts": 1795210152
+    },
+    {
+      "tokens": [
+        "5",
+        "btcpay",
+        "emergency",
+        "flaws",
+        "issues",
+        "security",
+        "server",
+        "update"
+      ],
+      "ts": 1795210156
+    },
+    {
+      "tokens": [
+        "62k",
+        "ahead",
+        "anthropic",
+        "bitcoin",
+        "debut",
+        "futures",
+        "nasdaq",
+        "retests",
+        "rise"
+      ],
+      "ts": 1795210159
+    },
+    {
+      "tokens": [
+        "crooked",
+        "favreau",
+        "jon",
+        "lost",
+        "medias",
+        "public",
+        "silicon",
+        "valley"
+      ],
+      "ts": 1795210163
+    },
+    {
+      "tokens": [
+        "access",
+        "ai",
+        "deepseek",
+        "models",
+        "pursuing",
+        "sarvam",
+        "sells",
+        "sovereign",
+        "while"
+      ],
+      "ts": 1795210166
+    },
+    {
+      "tokens": [
+        "260m",
+        "drones",
+        "long",
+        "package",
+        "part",
+        "provide",
+        "range",
+        "uk",
+        "ukraine"
+      ],
+      "ts": 1795210170
+    },
+    {
+      "tokens": [
+        "can",
+        "encouraged",
+        "girls",
+        "sport",
+        "take"
+      ],
+      "ts": 1795210174
     }
   ]
 }
