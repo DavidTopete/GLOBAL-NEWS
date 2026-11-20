@@ -146,7 +146,6 @@ MAX_LARGO_DESCRIPCION = 900
 LIMITE_CAPTION = 1024          # limite de Telegram para el texto de una foto
 TEXTO_ENLACE = "🔗 Ver noticia completa"
 PAUSA_ENTRE_MENSAJES = 3.0      # canales/grupos: ~20 mensajes/minuto
-                                # (cada noticia son 2 mensajes)
 MAX_REINTENTOS_TELEGRAM = 3
 MAX_REINTENTOS_NEWSAPI = 2
 
@@ -544,7 +543,7 @@ def _llamar_telegram(metodo, datos):
 
 def pausa_telegram():
     """Canales y grupos admiten ~20 mensajes/minuto: se espera antes de
-    cada mensaje (titulo y cuerpo cuentan por separado)."""
+    cada mensaje."""
     if not DRY_RUN:
         time.sleep(PAUSA_ENTRE_MENSAJES)
 
@@ -575,73 +574,44 @@ def enviar_texto(texto, preview_url=None):
     return message_id or 1
 
 
-def borrar_mensaje(message_id):
-    """Borra un titulo que quedo sin su cuerpo (best effort)."""
-    if DRY_RUN or not isinstance(message_id, int) or message_id <= 1:
-        return
-    ok, status, descripcion, _ = _llamar_telegram("deleteMessage", {
-        "chat_id": CHAT_ID, "message_id": message_id,
-    })
-    if ok:
-        log.info("Titulo huerfano borrado.")
-    else:
-        log.warning(f"No se pudo borrar el titulo huerfano (HTTP {status}): {descripcion}")
-
-
 def enviar_noticia(noticia):
-    """Publica la noticia en dos mensajes seguidos:
+    """Publica la noticia en UN SOLO mensaje:
 
-        1) Titulo (texto)
-        2) Imagen con el resumen y el enlace debajo
+        [ imagen ]
+        Titulo
+        Resumen de un parrafo
+        Enlace
 
-    Telegram siempre muestra el texto de una foto DEBAJO de la imagen, por
-    eso el titulo va en un mensaje aparte.
+    Telegram no permite intercalar una imagen entre bloques de texto: en un
+    mensaje con foto todo el texto va debajo (o todo arriba). Por eso la
+    imagen encabeza el mensaje y el resto va como texto al pie.
 
-    Si no hay imagen o Telegram la rechaza (HTTP 400), el mensaje 2 se envia
-    como texto con la vista previa del enlace arriba, manteniendo el orden
-    titulo -> imagen -> resumen -> enlace. Ante un error de red NO se reenvia:
-    la foto pudo haberse entregado y se duplicaria.
-
-    Si el mensaje 2 falla de forma definitiva, se borra el titulo para no
-    dejarlo huerfano."""
+    Si no hay imagen o Telegram la rechaza (HTTP 400), se envia como texto
+    con la vista previa del enlace ARRIBA, manteniendo el mismo orden.
+    Ante un error de red NO se reenvia: la foto pudo haberse entregado y
+    se duplicaria."""
     if DRY_RUN:
         print("\n" + "-" * 70)
-        print(noticia["titulo_html"])
         print(f"[IMAGEN] {noticia['imagen'] or '(vista previa del enlace)'}")
-        print(noticia["cuerpo"])
+        print(noticia["mensaje"])
         return True
-
-    id_titulo = enviar_texto(noticia["titulo_html"])
-    if id_titulo is None:
-        return False
-
-    pausa_telegram()
 
     if noticia["imagen"]:
         ok, status, descripcion, _ = _llamar_telegram("sendPhoto", {
             "chat_id": CHAT_ID,
             "photo": noticia["imagen"],
-            "caption": noticia["cuerpo"],
+            "caption": noticia["mensaje"],
             "parse_mode": "HTML",
         })
         if ok:
             return True
-        if status is None:
-            # Error de red: estado incierto, no se borra ni se reenvia.
-            log.error(f"Telegram sendPhoto sin respuesta: {descripcion}")
-            return False
         if status != 400:
             log.error(f"Telegram sendPhoto fallo (HTTP {status}): {descripcion}")
-            borrar_mensaje(id_titulo)
             return False
         log.warning(f"Telegram rechazo la imagen ({descripcion}); "
                     f"se usa la vista previa del enlace.")
 
-    if enviar_texto(noticia["cuerpo"], preview_url=noticia["link"]) is not None:
-        return True
-
-    borrar_mensaje(id_titulo)
-    return False
+    return enviar_texto(noticia["mensaje"], preview_url=noticia["link"]) is not None
 
 
 # ---------------------------------------------------------------------------
@@ -676,24 +646,23 @@ def url_imagen(articulo):
     return url if url.startswith(("http://", "https://")) else ""
 
 
-def construir_partes(titulo_es, resumen_es, link):
-    """Devuelve (titulo_html, cuerpo_html).
+def construir_mensaje(titulo_es, resumen_es, link):
+    """Titulo + resumen de un parrafo + enlace, en un solo bloque.
 
-    El cuerpo (resumen + enlace) va como texto al pie de la foto: debe caber
-    en 1024 caracteres visibles. Se recorta el texto plano ANTES de escapar,
-    nunca el HTML."""
-    titulo_html = f"<b>{html.escape(titulo_es)}</b>"
-
-    presupuesto = (LIMITE_CAPTION - len(TEXTO_ENLACE)
-                   - 2      # separador "\n\n"
+    Va como texto al pie de la foto: debe caber en 1024 caracteres
+    visibles. El resumen se ajusta al espacio que dejan el titulo y el
+    enlace. Se recorta el texto plano ANTES de escapar, nunca el HTML."""
+    titulo_es = recortar(titulo_es, MAX_LARGO_TITULO)
+    presupuesto = (LIMITE_CAPTION - len(titulo_es) - len(TEXTO_ENLACE)
+                   - 4      # dos separadores "\n\n"
                    - 10)    # margen
-    enlace = f'<a href="{html.escape(link, quote=True)}">{TEXTO_ENLACE}</a>'
-    if resumen_es:
-        cuerpo = f"{html.escape(recortar_parrafo(resumen_es, presupuesto))}\n\n{enlace}"
-    else:
-        cuerpo = enlace
 
-    return titulo_html, cuerpo
+    partes = [f"<b>{html.escape(titulo_es)}</b>"]
+    if resumen_es and presupuesto > 80:
+        partes.append(html.escape(recortar_parrafo(resumen_es, presupuesto)))
+    partes.append(f'<a href="{html.escape(link, quote=True)}">{TEXTO_ENLACE}</a>')
+
+    return "\n\n".join(partes)
 
 
 def preparar_noticia(articulo, categoria):
@@ -728,15 +697,12 @@ def preparar_noticia(articulo, categoria):
                 return None
             log.warning("Resumen sin traducir; se publica solo el titulo.")
 
-    titulo_html, cuerpo = construir_partes(limpiar_texto(titulo_es), resumen_es, link)
-
     return {
         "etiqueta": categoria["etiqueta"],
         "link": link,
         "imagen": url_imagen(articulo),
         "titulo_original": titulo,
-        "titulo_html": titulo_html,
-        "cuerpo": cuerpo,
+        "mensaje": construir_mensaje(limpiar_texto(titulo_es), resumen_es, link),
     }
 
 
