@@ -146,6 +146,7 @@ MAX_LARGO_DESCRIPCION = 900
 LIMITE_CAPTION = 1024          # limite de Telegram para el texto de una foto
 TEXTO_ENLACE = "🔗 Ver noticia completa"
 PAUSA_ENTRE_MENSAJES = 3.0      # canales/grupos: ~20 mensajes/minuto
+                                # (cada noticia son 2 mensajes)
 MAX_REINTENTOS_TELEGRAM = 3
 MAX_REINTENTOS_NEWSAPI = 2
 
@@ -498,7 +499,7 @@ def obtener_noticias(query, dominios, page_size=20):
 
 
 def _llamar_telegram(metodo, datos):
-    """Llama a la Bot API. Devuelve (ok, status_code, descripcion).
+    """Llama a la Bot API. Devuelve (ok, status_code, descripcion, message_id).
     Respeta 'retry_after' en 429 y reintenta errores 5xx/red."""
     url = f"{URL_TELEGRAM_API}/{metodo}"
 
@@ -510,7 +511,7 @@ def _llamar_telegram(metodo, datos):
             if intento < MAX_REINTENTOS_TELEGRAM:
                 time.sleep(2 * intento)
                 continue
-            return False, None, str(error)
+            return False, None, str(error), None
 
         try:
             payload = response.json()
@@ -518,7 +519,9 @@ def _llamar_telegram(metodo, datos):
             payload = {}
 
         if response.status_code == 200 and payload.get("ok"):
-            return True, 200, ""
+            resultado = payload.get("result")
+            message_id = resultado.get("message_id") if isinstance(resultado, dict) else None
+            return True, 200, "", message_id
 
         if response.status_code == 429 and intento < MAX_REINTENTOS_TELEGRAM:
             espera = (payload.get("parameters") or {}).get("retry_after", 5)
@@ -533,17 +536,26 @@ def _llamar_telegram(metodo, datos):
             time.sleep(2 * intento)
             continue
 
-        return False, response.status_code, payload.get("description") or response.text[:300]
+        return (False, response.status_code,
+                payload.get("description") or response.text[:300], None)
 
-    return False, None, "reintentos agotados"
+    return False, None, "reintentos agotados", None
+
+
+def pausa_telegram():
+    """Canales y grupos admiten ~20 mensajes/minuto: se espera antes de
+    cada mensaje (titulo y cuerpo cuentan por separado)."""
+    if not DRY_RUN:
+        time.sleep(PAUSA_ENTRE_MENSAJES)
 
 
 def enviar_texto(texto, preview_url=None):
-    """Envia un mensaje de texto. Con preview_url, Telegram muestra la
-    vista previa de esa pagina (normalmente con su imagen principal)."""
+    """Envia un mensaje de texto. Devuelve el message_id, o None si fallo.
+    Con preview_url, Telegram muestra arriba del texto la vista previa de
+    esa pagina (normalmente con su imagen principal)."""
     if DRY_RUN:
-        print("\n" + "-" * 70 + "\n" + texto)
-        return True
+        print("\n" + texto)
+        return 1
 
     if preview_url:
         preview = {"url": preview_url, "prefer_large_media": True,
@@ -551,7 +563,7 @@ def enviar_texto(texto, preview_url=None):
     else:
         preview = {"is_disabled": True}
 
-    ok, status, descripcion = _llamar_telegram("sendMessage", {
+    ok, status, descripcion, message_id = _llamar_telegram("sendMessage", {
         "chat_id": CHAT_ID,
         "text": texto,
         "parse_mode": "HTML",
@@ -559,37 +571,77 @@ def enviar_texto(texto, preview_url=None):
     })
     if not ok:
         log.error(f"Telegram sendMessage fallo (HTTP {status}): {descripcion}")
-    return ok
+        return None
+    return message_id or 1
+
+
+def borrar_mensaje(message_id):
+    """Borra un titulo que quedo sin su cuerpo (best effort)."""
+    if DRY_RUN or not isinstance(message_id, int) or message_id <= 1:
+        return
+    ok, status, descripcion, _ = _llamar_telegram("deleteMessage", {
+        "chat_id": CHAT_ID, "message_id": message_id,
+    })
+    if ok:
+        log.info("Titulo huerfano borrado.")
+    else:
+        log.warning(f"No se pudo borrar el titulo huerfano (HTTP {status}): {descripcion}")
 
 
 def enviar_noticia(noticia):
-    """Envia la noticia como foto con texto al pie. Si no hay imagen o
-    Telegram la rechaza (URL caida, formato o tamano no valido), la envia
-    como texto con la vista previa del enlace.
+    """Publica la noticia en dos mensajes seguidos:
 
-    Solo se recurre al texto ante un rechazo definitivo (HTTP 400): ante un
-    error de red la foto pudo haberse entregado y reenviar la duplicaria."""
+        1) Titulo (texto)
+        2) Imagen con el resumen y el enlace debajo
+
+    Telegram siempre muestra el texto de una foto DEBAJO de la imagen, por
+    eso el titulo va en un mensaje aparte.
+
+    Si no hay imagen o Telegram la rechaza (HTTP 400), el mensaje 2 se envia
+    como texto con la vista previa del enlace arriba, manteniendo el orden
+    titulo -> imagen -> resumen -> enlace. Ante un error de red NO se reenvia:
+    la foto pudo haberse entregado y se duplicaria.
+
+    Si el mensaje 2 falla de forma definitiva, se borra el titulo para no
+    dejarlo huerfano."""
     if DRY_RUN:
         print("\n" + "-" * 70)
-        print(f"[IMAGEN] {noticia['imagen'] or '(sin imagen: vista previa del enlace)'}")
-        print(noticia["mensaje"])
+        print(noticia["titulo_html"])
+        print(f"[IMAGEN] {noticia['imagen'] or '(vista previa del enlace)'}")
+        print(noticia["cuerpo"])
         return True
 
+    id_titulo = enviar_texto(noticia["titulo_html"])
+    if id_titulo is None:
+        return False
+
+    pausa_telegram()
+
     if noticia["imagen"]:
-        ok, status, descripcion = _llamar_telegram("sendPhoto", {
+        ok, status, descripcion, _ = _llamar_telegram("sendPhoto", {
             "chat_id": CHAT_ID,
             "photo": noticia["imagen"],
-            "caption": noticia["mensaje"],
+            "caption": noticia["cuerpo"],
             "parse_mode": "HTML",
         })
         if ok:
             return True
+        if status is None:
+            # Error de red: estado incierto, no se borra ni se reenvia.
+            log.error(f"Telegram sendPhoto sin respuesta: {descripcion}")
+            return False
         if status != 400:
             log.error(f"Telegram sendPhoto fallo (HTTP {status}): {descripcion}")
+            borrar_mensaje(id_titulo)
             return False
-        log.warning(f"Telegram rechazo la imagen ({descripcion}); se envia sin foto.")
+        log.warning(f"Telegram rechazo la imagen ({descripcion}); "
+                    f"se usa la vista previa del enlace.")
 
-    return enviar_texto(noticia["mensaje"], preview_url=noticia["link"])
+    if enviar_texto(noticia["cuerpo"], preview_url=noticia["link"]) is not None:
+        return True
+
+    borrar_mensaje(id_titulo)
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -624,20 +676,24 @@ def url_imagen(articulo):
     return url if url.startswith(("http://", "https://")) else ""
 
 
-def construir_mensaje(titulo_es, resumen_es, link):
-    """Titulo + resumen de un parrafo + enlace.
+def construir_partes(titulo_es, resumen_es, link):
+    """Devuelve (titulo_html, cuerpo_html).
 
-    Debe caber en el texto al pie de una foto (1024 caracteres visibles):
-    el resumen se ajusta al espacio que dejan el titulo y el enlace. Se
-    recorta el texto plano ANTES de escapar, nunca el HTML."""
-    presupuesto = (LIMITE_CAPTION - len(titulo_es) - len(TEXTO_ENLACE)
-                   - 4      # dos separadores "\n\n"
+    El cuerpo (resumen + enlace) va como texto al pie de la foto: debe caber
+    en 1024 caracteres visibles. Se recorta el texto plano ANTES de escapar,
+    nunca el HTML."""
+    titulo_html = f"<b>{html.escape(titulo_es)}</b>"
+
+    presupuesto = (LIMITE_CAPTION - len(TEXTO_ENLACE)
+                   - 2      # separador "\n\n"
                    - 10)    # margen
-    partes = [f"<b>{html.escape(titulo_es)}</b>"]
-    if resumen_es and presupuesto > 80:
-        partes.append(html.escape(recortar_parrafo(resumen_es, presupuesto)))
-    partes.append(f'<a href="{html.escape(link, quote=True)}">{TEXTO_ENLACE}</a>')
-    return "\n\n".join(partes)
+    enlace = f'<a href="{html.escape(link, quote=True)}">{TEXTO_ENLACE}</a>'
+    if resumen_es:
+        cuerpo = f"{html.escape(recortar_parrafo(resumen_es, presupuesto))}\n\n{enlace}"
+    else:
+        cuerpo = enlace
+
+    return titulo_html, cuerpo
 
 
 def preparar_noticia(articulo, categoria):
@@ -672,12 +728,15 @@ def preparar_noticia(articulo, categoria):
                 return None
             log.warning("Resumen sin traducir; se publica solo el titulo.")
 
+    titulo_html, cuerpo = construir_partes(limpiar_texto(titulo_es), resumen_es, link)
+
     return {
         "etiqueta": categoria["etiqueta"],
         "link": link,
         "imagen": url_imagen(articulo),
         "titulo_original": titulo,
-        "mensaje": construir_mensaje(limpiar_texto(titulo_es), resumen_es, link),
+        "titulo_html": titulo_html,
+        "cuerpo": cuerpo,
     }
 
 
@@ -948,8 +1007,7 @@ def main():
     fallidas = 0
 
     for noticia in lote:
-        if not DRY_RUN:
-            time.sleep(PAUSA_ENTRE_MENSAJES)
+        pausa_telegram()
 
         if enviar_noticia(noticia):
             historial.registrar(noticia["link"], noticia["tokens"])
