@@ -12,7 +12,19 @@
     "https://theverge.com/tech/1038087/meta-muse-charm-ai-price": 1795209073,
     "https://theverge.com/tech/1038059/google-search-homepage-ai-chats": 1795209077,
     "https://bbc.com/news/articles/ckzd9nln5e6go": 1795209080,
-    "https://bbc.com/news/articles/cwn70vrjlg8ro": 1795209083
+    "https://bbc.com/news/articles/cwn70vrjlg8ro": 1795209083,
+    "https://bbc.com/news/articles/cw4gn9jeqjq7o": 1795209493,
+    "https://bbc.com/news/articles/c623j4ln97x7o": 1795209496,
+    "https://cnbc.com/2026/11/19/trump-nvidia-spacex-palantir-stock-trades-september.html": 1795209500,
+    "https://cnbc.com/2026/11/19/palo-alto-networks-earnings-applied-compute.html": 1795209504,
+    "https://cnbc.com/2026/11/19/amd-falls-on-short-seller-report-of-alleged-china-exposure.html": 1795209508,
+    "https://cointelegraph.com/news/ethereum-glamsterdam-could-slip-to-may-2027": 1795209512,
+    "https://cointelegraph.com/news/why-higher-rates-could-slow-bitcoin-buying-at-treasury-firms": 1795209517,
+    "https://cointelegraph.com/markets/bitcoin-price-ignores-anthropic-debut-ant-share-price-dips-below-100": 1795209521,
+    "https://theverge.com/policy/1037987/fcc-prison-cellphone-signal-jamming": 1795209524,
+    "https://theverge.com/tech/1037902/google-gemini-macos-ai-computer-use": 1795209528,
+    "https://bbc.com/sport/swimming/articles/c6x20gd79g99o": 1795209532,
+    "https://bbc.com/sport/football/articles/cwlymr2159y5o": 1795209536
   },
   "titulos": [
     {
@@ -182,6 +194,173 @@
         "xi"
       ],
       "ts": 1795209083
+    },
+    {
+      "tokens": [
+        "attack",
+        "first",
+        "iranian",
+        "island",
+        "kuwait",
+        "months",
+        "repelled",
+        "strikes",
+        "two",
+        "us"
+      ],
+      "ts": 1795209493
+    },
+    {
+      "tokens": [
+        "declaration",
+        "following",
+        "meeting",
+        "peace",
+        "putin",
+        "release",
+        "trump",
+        "unprecedented",
+        "xi"
+      ],
+      "ts": 1795209496
+    },
+    {
+      "tokens": [
+        "bought",
+        "deals",
+        "federal",
+        "grew",
+        "house",
+        "nvidia",
+        "palantir",
+        "september",
+        "spacex",
+        "ties",
+        "trump",
+        "white"
+      ],
+      "ts": 1795209500
+    },
+    {
+      "tokens": [
+        "alto",
+        "beat",
+        "bet",
+        "big",
+        "company",
+        "earnings",
+        "jumps",
+        "models",
+        "open",
+        "palo",
+        "securing",
+        "stock",
+        "weight"
+      ],
+      "ts": 1795209504
+    },
+    {
+      "tokens": [
+        "alleged",
+        "amd",
+        "china",
+        "exposure",
+        "falls",
+        "report",
+        "seller",
+        "short"
+      ],
+      "ts": 1795209508
+    },
+    {
+      "tokens": [
+        "2027",
+        "compatibility",
+        "concerns",
+        "ethereums",
+        "glamsterdam",
+        "slip",
+        "upgrade"
+      ],
+      "ts": 1795209512
+    },
+    {
+      "tokens": [
+        "bitcoin",
+        "buying",
+        "firms",
+        "higher",
+        "rates",
+        "slow",
+        "treasury"
+      ],
+      "ts": 1795209517
+    },
+    {
+      "tokens": [
+        "100",
+        "ant",
+        "anthropic",
+        "below",
+        "bitcoin",
+        "debut",
+        "dips",
+        "ignores",
+        "price",
+        "share"
+      ],
+      "ts": 1795209521
+    },
+    {
+      "tokens": [
+        "allowing",
+        "cellphone",
+        "fcc",
+        "greenlights",
+        "jam",
+        "prisons",
+        "rule",
+        "signals"
+      ],
+      "ts": 1795209524
+    },
+    {
+      "tokens": [
+        "can",
+        "computer",
+        "gemini",
+        "mac",
+        "now",
+        "use",
+        "your"
+      ],
+      "ts": 1795209528
+    },
+    {
+      "tokens": [
+        "haul",
+        "manchester",
+        "medal",
+        "morgan",
+        "motivated",
+        "move"
+      ],
+      "ts": 1795209532
+    },
+    {
+      "tokens": [
+        "blink",
+        "club",
+        "if",
+        "ll",
+        "makes",
+        "mcinnes",
+        "offer",
+        "only",
+        "sell",
+        "we"
+      ],
+      "ts": 1795209536
     }
   ]
 }
