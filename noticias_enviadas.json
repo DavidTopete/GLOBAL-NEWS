@@ -1,5 +1,178 @@
 {
   "version": 2,
-  "urls": {},
-  "titulos": []
+  "urls": {
+    "https://bloomberg.com/news/articles/2026-11-18/smaller-tankers--hormuz-shuttle-trade-oil-flows-wti-brent-crude": 1795210312,
+    "https://cnn.com/2026/11/19/politics/fema-is-dealing-with-its-own-emergency-bed-bugs": 1795210316,
+    "https://cnbc.com/2026/11/19/gap-gap-q3-2026-earnings.html": 1795210320,
+    "https://cnbc.com/2026/11/19/intuit-mailchimp-sale-bending-spoons.html": 1795210324,
+    "https://cnbc.com/2026/11/19/social-security-ponzi-scheme-ron-johnson.html": 1795210327,
+    "https://cointelegraph.com/news/moonpay-seeks-us-bank-charter-for-stablecoin-custody-services": 1795210331,
+    "https://cointelegraph.com/markets/hyperliquid-anthropic-futures-nasdaq-opening-price": 1795210334,
+    "https://cointelegraph.com/news/sec-nominees-johnson-levine-tokenized-stocks": 1795210338,
+    "https://theverge.com/tech/1038087/meta-muse-charm-ai-price": 1795210342,
+    "https://theverge.com/tech/1038059/google-search-homepage-ai-chats": 1795210345,
+    "https://bbc.com/news/articles/ckzd9nln5e6go": 1795210349,
+    "https://bbc.com/news/articles/cwn70vrjlg8ro": 1795210352
+  },
+  "titulos": [
+    {
+      "tokens": [
+        "crude",
+        "flowing",
+        "hormuz",
+        "keep",
+        "oil",
+        "shuttling",
+        "smaller",
+        "tankers",
+        "trade"
+      ],
+      "ts": 1795210312
+    },
+    {
+      "tokens": [
+        "bed",
+        "bugs",
+        "emergency",
+        "fema",
+        "force",
+        "headquarters",
+        "own",
+        "workers"
+      ],
+      "ts": 1795210316
+    },
+    {
+      "tokens": [
+        "athleta",
+        "ceo",
+        "full",
+        "gap",
+        "guidance",
+        "lowers",
+        "names",
+        "year"
+      ],
+      "ts": 1795210320
+    },
+    {
+      "tokens": [
+        "3",
+        "68",
+        "bending",
+        "billion",
+        "intuit",
+        "mailchimp",
+        "sell",
+        "spoons"
+      ],
+      "ts": 1795210324
+    },
+    {
+      "tokens": [
+        "experts",
+        "gets",
+        "johnson",
+        "label",
+        "ponzi",
+        "ron",
+        "say",
+        "scheme",
+        "security",
+        "social",
+        "wrong"
+      ],
+      "ts": 1795210327
+    },
+    {
+      "tokens": [
+        "bank",
+        "charter",
+        "custody",
+        "moonpay",
+        "seeks",
+        "services",
+        "stablecoin",
+        "us"
+      ],
+      "ts": 1795210331
+    },
+    {
+      "tokens": [
+        "1",
+        "anthropic",
+        "futures",
+        "hyperliquid",
+        "nasdaq",
+        "opening",
+        "price",
+        "priced",
+        "within"
+      ],
+      "ts": 1795210334
+    },
+    {
+      "tokens": [
+        "backs",
+        "formal",
+        "johnson",
+        "nominee",
+        "rulemaking",
+        "sec",
+        "stock",
+        "tokenized",
+        "trading",
+        "trumps"
+      ],
+      "ts": 1795210338
+    },
+    {
+      "tokens": [
+        "300",
+        "charm",
+        "cost",
+        "metas",
+        "might",
+        "muse"
+      ],
+      "ts": 1795210342
+    },
+    {
+      "tokens": [
+        "ai",
+        "chats",
+        "google",
+        "homepage",
+        "putting",
+        "right"
+      ],
+      "ts": 1795210345
+    },
+    {
+      "tokens": [
+        "ending",
+        "europe",
+        "leaders",
+        "ready",
+        "russia",
+        "say",
+        "talks",
+        "ukraine",
+        "war"
+      ],
+      "ts": 1795210349
+    },
+    {
+      "tokens": [
+        "china",
+        "high",
+        "putin",
+        "spectacle",
+        "summit",
+        "trump",
+        "xi"
+      ],
+      "ts": 1795210352
+    }
+  ]
 }
