@@ -36,7 +36,19 @@
     "https://theverge.com/ai-artificial-intelligence/1035384/anthropic-ipo-trading-nasdaq": 1795209797,
     "https://theverge.com/ai-artificial-intelligence/1037634/openai-chatgpt-live-dictation": 1795209804,
     "https://bbc.com/news/articles/c6x280lqrxpgo": 1795209811,
-    "https://bbc.com/sport/football/articles/cw074z98jj34o": 1795209819
+    "https://bbc.com/sport/football/articles/cw074z98jj34o": 1795209819,
+    "https://cnn.com/2026/11/17/politics/trump-mullin-iran-threat-reaction": 1795209951,
+    "https://bloomberg.com/news/articles/2026-11-18/federal-workers-warned-not-to-telework-for-grand-theft-auto-vi": 1795209955,
+    "https://cnbc.com/2026/11/19/gap-gap-q3-2026-earnings.html": 1795209959,
+    "https://cnbc.com/2026/11/19/intuit-mailchimp-sale-bending-spoons.html": 1795209963,
+    "https://cnbc.com/2026/11/19/family-offices-moved-more-money-into-stocks-but-hedged-ai-risk.html": 1795209967,
+    "https://cointelegraph.com/news/swedens-h100-13m-q3-loss-share-buyback-approval": 1795209970,
+    "https://cointelegraph.com/news/iosco-quantum-blockchain-upgrades-security-risks": 1795209974,
+    "https://cointelegraph.com/news/mas-issues-77m-tokenized-bills-singapore-dollar-test-network": 1795209977,
+    "https://theverge.com/ai-artificial-intelligence/1037459/anthropic-ipo-safe-ai-reputation-power-structure": 1795209981,
+    "https://theverge.com/tech/1037535/google-blue-origin-project-suncatcher-2029": 1795209985,
+    "https://bbc.com/news/articles/cm9q84gp0gr3o": 1795209989,
+    "https://bbc.com/sport/rugby-union/articles/crq5vzdyzqpzo": 1795209993
   },
   "titulos": [
     {
@@ -533,6 +545,176 @@
         "oldham"
       ],
       "ts": 1795209819
+    },
+    {
+      "tokens": [
+        "bomb",
+        "carries",
+        "cnn",
+        "dirty",
+        "if",
+        "iran",
+        "major",
+        "pay",
+        "plan",
+        "politics",
+        "price",
+        "trump"
+      ],
+      "ts": 1795209951
+    },
+    {
+      "tokens": [
+        "auto",
+        "federal",
+        "grand",
+        "telework",
+        "theft",
+        "vi",
+        "warned",
+        "workers"
+      ],
+      "ts": 1795209955
+    },
+    {
+      "tokens": [
+        "athleta",
+        "ceo",
+        "full",
+        "gap",
+        "guidance",
+        "lowers",
+        "names",
+        "year"
+      ],
+      "ts": 1795209959
+    },
+    {
+      "tokens": [
+        "3",
+        "68",
+        "bending",
+        "billion",
+        "intuit",
+        "mailchimp",
+        "sell",
+        "spoons"
+      ],
+      "ts": 1795209963
+    },
+    {
+      "tokens": [
+        "according",
+        "ai",
+        "cnbc",
+        "family",
+        "hedge",
+        "money",
+        "move",
+        "office",
+        "offices",
+        "portfolio",
+        "risk",
+        "stocks",
+        "tracker"
+      ],
+      "ts": 1795209967
+    },
+    {
+      "tokens": [
+        "bitcoin",
+        "buybacks",
+        "fund",
+        "h100",
+        "pool",
+        "share",
+        "swedens",
+        "tap",
+        "trading"
+      ],
+      "ts": 1795209970
+    },
+    {
+      "tokens": [
+        "blockchains",
+        "gaps",
+        "iosco",
+        "leave",
+        "quantum",
+        "security",
+        "slow",
+        "upgrades",
+        "warns"
+      ],
+      "ts": 1795209974
+    },
+    {
+      "tokens": [
+        "5m",
+        "77",
+        "bill",
+        "cbdc",
+        "sale",
+        "settles",
+        "singapore",
+        "tokenized",
+        "wholesale"
+      ],
+      "ts": 1795209977
+    },
+    {
+      "tokens": [
+        "all",
+        "anthropics",
+        "biggest",
+        "good",
+        "guy",
+        "ipo",
+        "line",
+        "reputation",
+        "time"
+      ],
+      "ts": 1795209981
+    },
+    {
+      "tokens": [
+        "2029",
+        "ai",
+        "blue",
+        "googles",
+        "launch",
+        "origin",
+        "satellites",
+        "server"
+      ],
+      "ts": 1795209985
+    },
+    {
+      "tokens": [
+        "beating",
+        "chinese",
+        "consortium",
+        "deal",
+        "hill",
+        "kenya",
+        "mining",
+        "mrima",
+        "project",
+        "rivals",
+        "us",
+        "wins"
+      ],
+      "ts": 1795209989
+    },
+    {
+      "tokens": [
+        "botham",
+        "leaving",
+        "reasons",
+        "reveal",
+        "wales"
+      ],
+      "ts": 1795209993
     }
   ]
 }
