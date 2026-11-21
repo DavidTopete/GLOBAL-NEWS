@@ -24,7 +24,19 @@
     "https://theverge.com/policy/1037987/fcc-prison-cellphone-signal-jamming": 1795211686,
     "https://theverge.com/tech/1037902/google-gemini-macos-ai-computer-use": 1795211689,
     "https://bbc.com/sport/swimming/articles/c6x20gd79g99o": 1795211693,
-    "https://bbc.com/sport/football/articles/cwlymr2159y5o": 1795211696
+    "https://bbc.com/sport/football/articles/cwlymr2159y5o": 1795211696,
+    "https://cnn.com/2026/11/20/politics/mike-johnson-republican-attendance-votes": 1795283897,
+    "https://cnn.com/2026/11/20/politics/bill-pulte-adviser-reckless-driving-invs": 1795283901,
+    "https://cnbc.com/2026/11/20/data-center-construction-costs-soar-13-percent-in-2026.html": 1795283904,
+    "https://cnbc.com/2026/11/20/gm-ceo-succession-mary-barra-dan-akerson.html": 1795283908,
+    "https://cnbc.com/2026/11/20/warsh-fed-forward-guidance-rate-hikes.html": 1795283913,
+    "https://cointelegraph.com/markets/bitcoin-falls-below-60k-for-first-time-since-july-amid-broader-market-selloff": 1795283916,
+    "https://cointelegraph.com/markets/bitcoin-hits-new-20-week-low-anthropic-drops-87-tech-sell-off": 1795283919,
+    "https://cointelegraph.com/news/dbs-bets-it-can-lose-the-deposit-and-keep-the-client": 1795283923,
+    "https://theverge.com/gadgets/1035460/best-early-black-friday-apple-deals-2026": 1795283926,
+    "https://theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem": 1795283930,
+    "https://bbc.com/sport/football/articles/cvde1l410nkro": 1795283934,
+    "https://bbc.com/news/articles/c6x29gn4pdn9o": 1795283937
   },
   "titulos": [
     {
@@ -356,6 +368,170 @@
         "we"
       ],
       "ts": 1795211696
+    },
+    {
+      "tokens": [
+        "criticize",
+        "election",
+        "gop",
+        "leaders",
+        "losing",
+        "members",
+        "no",
+        "re",
+        "shows",
+        "washington"
+      ],
+      "ts": 1795283897
+    },
+    {
+      "tokens": [
+        "114",
+        "admin",
+        "cnn",
+        "driving",
+        "jailed",
+        "mph",
+        "official",
+        "politics",
+        "trump"
+      ],
+      "ts": 1795283901
+    },
+    {
+      "tokens": [
+        "13",
+        "2026",
+        "center",
+        "construction",
+        "costs",
+        "data",
+        "soar"
+      ],
+      "ts": 1795283904
+    },
+    {
+      "tokens": [
+        "barra",
+        "ceo",
+        "ex",
+        "gm",
+        "going",
+        "mary",
+        "planning",
+        "succession",
+        "tough"
+      ],
+      "ts": 1795283908
+    },
+    {
+      "tokens": [
+        "fed",
+        "instead",
+        "less",
+        "officials",
+        "talk",
+        "talking",
+        "theyre",
+        "wants",
+        "warsh"
+      ],
+      "ts": 1795283913
+    },
+    {
+      "tokens": [
+        "60k",
+        "below",
+        "bitcoin",
+        "broader",
+        "falls",
+        "first",
+        "july",
+        "market",
+        "selloff",
+        "since",
+        "time"
+      ],
+      "ts": 1795283916
+    },
+    {
+      "tokens": [
+        "60k",
+        "87",
+        "anthropic",
+        "bitcoin",
+        "drops",
+        "off",
+        "price",
+        "sell",
+        "tech"
+      ],
+      "ts": 1795283919
+    },
+    {
+      "tokens": [
+        "bets",
+        "can",
+        "client",
+        "dbs",
+        "deposit",
+        "keep",
+        "lose"
+      ],
+      "ts": 1795283923
+    },
+    {
+      "tokens": [
+        "actually",
+        "ahead",
+        "apple",
+        "black",
+        "deals",
+        "friday",
+        "here",
+        "picking",
+        "worth"
+      ],
+      "ts": 1795283926
+    },
+    {
+      "tokens": [
+        "anthropic",
+        "claims",
+        "claude",
+        "mathematician",
+        "millennium",
+        "prestigious",
+        "prize",
+        "problem",
+        "solved"
+      ],
+      "ts": 1795283930
+    },
+    {
+      "tokens": [
+        "cumbria",
+        "derby",
+        "form",
+        "rivals",
+        "set"
+      ],
+      "ts": 1795283934
+    },
+    {
+      "tokens": [
+        "attack",
+        "bridges",
+        "during",
+        "hit",
+        "kyiv",
+        "major",
+        "missile",
+        "russian",
+        "three",
+        "ukraine"
+      ],
+      "ts": 1795283937
     }
   ]
 }
