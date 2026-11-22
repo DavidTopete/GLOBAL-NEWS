@@ -36,7 +36,19 @@
     "https://theverge.com/gadgets/1035460/best-early-black-friday-apple-deals-2026": 1795283926,
     "https://theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem": 1795283930,
     "https://bbc.com/sport/football/articles/cvde1l410nkro": 1795283934,
-    "https://bbc.com/news/articles/c6x29gn4pdn9o": 1795283937
+    "https://bbc.com/news/articles/c6x29gn4pdn9o": 1795283937,
+    "https://cnn.com/2026/11/21/politics/republicans-2028-desantis-huckabee-sanders-kemp-youngkin": 1795372259,
+    "https://bbc.com/news/articles/cxnv4zvmdy0jo": 1795372263,
+    "https://bloomberg.com/news/articles/2026-11-20/ai-selloff-boosts-haven-demand-for-yen-franc-as-dollar-slips": 1795372267,
+    "https://cnbc.com/2026/11/21/prediction-market-regulation-kalshi-cftc.html": 1795372271,
+    "https://cnbc.com/2026/11/21/warren-buffett-quadruples-thanksgiving-gifts.html": 1795372275,
+    "https://cointelegraph.com/news/ecb-tokenized-deposits-securities-experiments-appia": 1795372278,
+    "https://cointelegraph.com/news/hong-kong-crypto-custody-advisory-licensing-bill": 1795372282,
+    "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit": 1795372286,
+    "https://bloomberg.com/news/articles/2026-11-21/anthropic-researcher-claims-to-solve-riemann-problem-with-claude": 1795372289,
+    "https://theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure": 1795372293,
+    "https://bbc.com/news/articles/cj752ddve27ko": 1795372296,
+    "https://bbc.com/news/articles/c6wy0qj7w5zqo": 1795372300
   },
   "titulos": [
     {
@@ -532,6 +544,166 @@
         "ukraine"
       ],
       "ts": 1795283937
+    },
+    {
+      "tokens": [
+        "alternative",
+        "ask",
+        "governor",
+        "jd",
+        "republicans",
+        "seeking",
+        "vance"
+      ],
+      "ts": 1795372259
+    },
+    {
+      "tokens": [
+        "calling",
+        "friend",
+        "he",
+        "killer",
+        "putin",
+        "reacts",
+        "trump",
+        "zelensky"
+      ],
+      "ts": 1795372263
+    },
+    {
+      "tokens": [
+        "ai",
+        "demand",
+        "dollar",
+        "franc",
+        "haven",
+        "selloff",
+        "slips",
+        "spurs",
+        "yen"
+      ],
+      "ts": 1795372267
+    },
+    {
+      "tokens": [
+        "battle",
+        "federal",
+        "heats",
+        "markets",
+        "midterms",
+        "prediction",
+        "regulation",
+        "state"
+      ],
+      "ts": 1795372271
+    },
+    {
+      "tokens": [
+        "away",
+        "breakdown",
+        "buffett",
+        "gifts",
+        "giving",
+        "he",
+        "much",
+        "quadruples",
+        "thanksgiving",
+        "warren",
+        "wealth"
+      ],
+      "ts": 1795372275
+    },
+    {
+      "tokens": [
+        "deposits",
+        "ecb",
+        "experiments",
+        "industry",
+        "partners",
+        "securities",
+        "seeks",
+        "tokenized"
+      ],
+      "ts": 1795372278
+    },
+    {
+      "tokens": [
+        "advisers",
+        "bring",
+        "crypto",
+        "custodians",
+        "hong",
+        "kong",
+        "licensing",
+        "pushes",
+        "rules",
+        "under"
+      ],
+      "ts": 1795372282
+    },
+    {
+      "tokens": [
+        "13",
+        "5m",
+        "8",
+        "99",
+        "crashes",
+        "exploit",
+        "monero",
+        "suspected",
+        "token",
+        "wrapped"
+      ],
+      "ts": 1795372286
+    },
+    {
+      "tokens": [
+        "anthropic",
+        "claims",
+        "claude",
+        "problem",
+        "researcher",
+        "riemann",
+        "solve"
+      ],
+      "ts": 1795372289
+    },
+    {
+      "tokens": [
+        "afford",
+        "anthropic",
+        "can",
+        "first",
+        "put",
+        "safety"
+      ],
+      "ts": 1795372293
+    },
+    {
+      "tokens": [
+        "attacked",
+        "bound",
+        "finland",
+        "gulf",
+        "russia",
+        "ship"
+      ],
+      "ts": 1795372296
+    },
+    {
+      "tokens": [
+        "bridge",
+        "crimean",
+        "fair",
+        "he",
+        "meets",
+        "response",
+        "streeting",
+        "strikes",
+        "uk",
+        "zelensky"
+      ],
+      "ts": 1795372300
     }
   ]
 }
