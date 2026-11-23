@@ -48,7 +48,19 @@
     "https://bloomberg.com/news/articles/2026-11-21/anthropic-researcher-claims-to-solve-riemann-problem-with-claude": 1795372289,
     "https://theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure": 1795372293,
     "https://bbc.com/news/articles/cj752ddve27ko": 1795372296,
-    "https://bbc.com/news/articles/c6wy0qj7w5zqo": 1795372300
+    "https://bbc.com/news/articles/c6wy0qj7w5zqo": 1795372300,
+    "https://cnn.com/2026/11/22/middleeast/hormuz-attacks-highest-levels-iran-war-intl": 1795447740,
+    "https://cnn.com/2026/11/22/climate/cop31-summit-collapses-in-fossil-fuel-failure": 1795447744,
+    "https://cnbc.com/2026/11/22/social-security-changes-cola-taxes-medicare.html": 1795447748,
+    "https://cnbc.com/make-it/2026/11/22/google-worker-earns-323000-a-yearbut-he-lives-on-minimum-wage.html": 1795447752,
+    "https://cnbc.com/2026/11/22/saudi-houthi-bahrain-iran-attacks-araghchi-talks.html": 1795447756,
+    "https://cointelegraph.com/opinion/future-onchain-fx-could-start-with-users-not-institutional-liquidity": 1795447760,
+    "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand": 1795447764,
+    "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit": 1795447767,
+    "https://bbc.com/news/articles/c68x08nzpk9no": 1795447771,
+    "https://bbc.com/news/articles/cw3dgk29d37no": 1795447774,
+    "https://bbc.com/sport/football/articles/cmn50x95vv73o": 1795447778,
+    "https://bbc.com/sport/formula1/articles/c3n0l5p5x5x5o": 1795447782
   },
   "titulos": [
     {
@@ -704,6 +716,176 @@
         "zelensky"
       ],
       "ts": 1795372300
+    },
+    {
+      "tokens": [
+        "attacks",
+        "began",
+        "cnn",
+        "conflict",
+        "highest",
+        "hormuz",
+        "iranian",
+        "levels",
+        "since",
+        "strait"
+      ],
+      "ts": 1795447740
+    },
+    {
+      "tokens": [
+        "agree",
+        "away",
+        "climate",
+        "cnn",
+        "collapses",
+        "countries",
+        "fail",
+        "fossil",
+        "fuels",
+        "global",
+        "moving",
+        "summit"
+      ],
+      "ts": 1795447744
+    },
+    {
+      "tokens": [
+        "2027",
+        "affect",
+        "benefits",
+        "changes",
+        "keep",
+        "other",
+        "rising",
+        "security",
+        "social",
+        "you"
+      ],
+      "ts": 1795447748
+    },
+    {
+      "tokens": [
+        "000",
+        "26",
+        "323",
+        "earns",
+        "google",
+        "less",
+        "lives",
+        "minimum",
+        "old",
+        "wage",
+        "worker",
+        "year",
+        "yearbut"
+      ],
+      "ts": 1795447752
+    },
+    {
+      "tokens": [
+        "arabia",
+        "attacks",
+        "bahrain",
+        "deal",
+        "iran",
+        "open",
+        "remains",
+        "report",
+        "saudi"
+      ],
+      "ts": 1795447756
+    },
+    {
+      "tokens": [
+        "future",
+        "fx",
+        "institutional",
+        "liquidity",
+        "onchain",
+        "start",
+        "users"
+      ],
+      "ts": 1795447760
+    },
+    {
+      "tokens": [
+        "17k",
+        "bitcoin",
+        "briefly",
+        "drops",
+        "exchange",
+        "kraken",
+        "trades",
+        "upholds"
+      ],
+      "ts": 1795447764
+    },
+    {
+      "tokens": [
+        "bridge",
+        "cyber",
+        "exchanges",
+        "exploit",
+        "halt",
+        "korean",
+        "south",
+        "suspected",
+        "transfers"
+      ],
+      "ts": 1795447767
+    },
+    {
+      "tokens": [
+        "aircraft",
+        "combat",
+        "crewed",
+        "fighter",
+        "jet",
+        "last",
+        "next",
+        "raf"
+      ],
+      "ts": 1795447771
+    },
+    {
+      "tokens": [
+        "cheating",
+        "education",
+        "exam",
+        "korea",
+        "minister",
+        "resigns",
+        "scandal",
+        "south"
+      ],
+      "ts": 1795447774
+    },
+    {
+      "tokens": [
+        "delivers",
+        "football",
+        "frick",
+        "heavy",
+        "metal",
+        "promise"
+      ],
+      "ts": 1795447778
+    },
+    {
+      "tokens": [
+        "below",
+        "chaos",
+        "constant",
+        "far",
+        "he",
+        "level",
+        "my",
+        "russell",
+        "so",
+        "verstappen"
+      ],
+      "ts": 1795447782
     }
   ]
 }
