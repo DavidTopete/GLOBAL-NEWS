@@ -24,7 +24,19 @@
     "https://theverge.com/games/1039838/samsungs-odyssey-g6-1100hz-gaming-monitor": 1795473592,
     "https://theverge.com/games/1039770/binding-of-isaac-ai-music": 1795473596,
     "https://bbc.com/news/articles/cqdr15l32d3go": 1795473600,
-    "https://bbc.com/news/articles/cr894gjz0j0yo": 1795473603
+    "https://bbc.com/news/articles/cr894gjz0j0yo": 1795473603,
+    "https://bbc.com/news/articles/cq1j6585l5g6o": 1795554708,
+    "https://bbc.com/news/articles/cq5y1k8ez407o": 1795554712,
+    "https://cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html": 1795554716,
+    "https://cnbc.com/2026/11/23/nvidia-stock-jensen-huang-ai-trade.html": 1795554720,
+    "https://cnbc.com/2026/11/23/nvidia-jensen-huang-trump-bessent-china.html": 1795554724,
+    "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack": 1795554727,
+    "https://cointelegraph.com/news/kalshi-temporary-win-new-york-gambling-law-dispute": 1795554731,
+    "https://cointelegraph.com/news/btcs-offloads-44m-eth-reduce-defi-debt-market-downturn": 1795554734,
+    "https://theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit": 1795554741,
+    "https://theverge.com/tech/1040487/nvidia-ceo-jensen-huang-staff-applauds-return": 1795554746,
+    "https://bbc.com/news/articles/c6wy4ng1rznxo": 1795554749,
+    "https://bbc.com/news/articles/cm894p88jzxpo": 1795554753
   },
   "titulos": [
     {
@@ -365,6 +377,176 @@
         "ship"
       ],
       "ts": 1795473603
+    },
+    {
+      "tokens": [
+        "authorities",
+        "flog",
+        "hijab",
+        "iranian",
+        "lawyers",
+        "performed",
+        "say",
+        "singer",
+        "without"
+      ],
+      "ts": 1795554708
+    },
+    {
+      "tokens": [
+        "convinced",
+        "donald",
+        "he",
+        "huang",
+        "jensen",
+        "nvidia",
+        "reinstate",
+        "trump"
+      ],
+      "ts": 1795554712
+    },
+    {
+      "tokens": [
+        "address",
+        "fed",
+        "higher",
+        "indicates",
+        "inflation",
+        "interest",
+        "john",
+        "likely",
+        "rates",
+        "time",
+        "williams"
+      ],
+      "ts": 1795554716
+    },
+    {
+      "tokens": [
+        "ai",
+        "do",
+        "investors",
+        "now",
+        "nvidia",
+        "should",
+        "stock",
+        "surge",
+        "trade"
+      ],
+      "ts": 1795554720
+    },
+    {
+      "tokens": [
+        "bessents",
+        "china",
+        "face",
+        "heres",
+        "huang",
+        "jensen",
+        "peterson",
+        "reveals",
+        "trump"
+      ],
+      "ts": 1795554724
+    },
+    {
+      "tokens": [
+        "1",
+        "1b",
+        "binance",
+        "crypto",
+        "hack",
+        "korea",
+        "linked",
+        "north",
+        "recover",
+        "seeks",
+        "stolen",
+        "us"
+      ],
+      "ts": 1795554727
+    },
+    {
+      "tokens": [
+        "dispute",
+        "gambling",
+        "kalshi",
+        "law",
+        "secures",
+        "temporary",
+        "win",
+        "york"
+      ],
+      "ts": 1795554731
+    },
+    {
+      "tokens": [
+        "44m",
+        "btcs",
+        "debt",
+        "defi",
+        "downturn",
+        "eth",
+        "market",
+        "offloads",
+        "reduce"
+      ],
+      "ts": 1795554734
+    },
+    {
+      "tokens": [
+        "ai",
+        "another",
+        "centers",
+        "chaotic",
+        "climate",
+        "data",
+        "talks",
+        "throw",
+        "un",
+        "wrench"
+      ],
+      "ts": 1795554741
+    },
+    {
+      "tokens": [
+        "applauds",
+        "better",
+        "ceo",
+        "hell",
+        "his",
+        "huang",
+        "jensen",
+        "return",
+        "staff"
+      ],
+      "ts": 1795554746
+    },
+    {
+      "tokens": [
+        "genocide",
+        "leaders",
+        "military",
+        "myanmar",
+        "rohingya",
+        "ruling",
+        "sanctions",
+        "top",
+        "uk"
+      ],
+      "ts": 1795554749
+    },
+    {
+      "tokens": [
+        "libya",
+        "russian",
+        "ship",
+        "spread",
+        "strike",
+        "ukraine",
+        "war"
+      ],
+      "ts": 1795554753
     }
   ]
 }
