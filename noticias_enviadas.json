@@ -36,7 +36,19 @@
     "https://theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit": 1795554741,
     "https://theverge.com/tech/1040487/nvidia-ceo-jensen-huang-staff-applauds-return": 1795554746,
     "https://bbc.com/news/articles/c6wy4ng1rznxo": 1795554749,
-    "https://bbc.com/news/articles/cm894p88jzxpo": 1795554753
+    "https://bbc.com/news/articles/cm894p88jzxpo": 1795554753,
+    "https://cnn.com/2026/11/23/middleeast/iran-flogs-singer-parastoo-ahmadi-latam-intl": 1795638532,
+    "https://cnn.com/2026/11/24/tech/jensen-huang-apologies-employees-therapy": 1795638536,
+    "https://cnbc.com/2026/11/24/gold-is-doing-something-strange-heres-one-way-to-play-it-.html": 1795638540,
+    "https://cnbc.com/2026/11/24/kalshi-perps-volume-prediction-markets.html": 1795638544,
+    "https://cnbc.com/2026/11/24/retail-turnarounds-holiday-season.html": 1795638548,
+    "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares": 1795638551,
+    "https://cointelegraph.com/news/coldcard-how-security-reviews-missed-bitcoin-wallet-flaw-years": 1795638556,
+    "https://cointelegraph.com/news/cftc-new-prediction-market-rules-firms-seek-us-entry": 1795638561,
+    "https://theverge.com/tech/1041571/jensen-huang-all-hands-nvidia-apology": 1795638565,
+    "https://theverge.com/policy/1041568/fisa-ndaa-blue-wave": 1795638577,
+    "https://bbc.com/sport/tennis/articles/cxlylr3p4q8mo": 1795638580,
+    "https://cnn.com/2026/11/24/politics/trump-jensen-huang-nvidia-messaging": 1795638584
   },
   "titulos": [
     {
@@ -547,6 +559,171 @@
         "war"
       ],
       "ts": 1795554753
+    },
+    {
+      "tokens": [
+        "cnn",
+        "concert",
+        "female",
+        "flogs",
+        "four",
+        "her",
+        "hijab",
+        "iran",
+        "members",
+        "performance",
+        "singer",
+        "team",
+        "without"
+      ],
+      "ts": 1795638532
+    },
+    {
+      "tokens": [
+        "apologizes",
+        "business",
+        "cnn",
+        "employees",
+        "hes",
+        "huang",
+        "jensen",
+        "therapy"
+      ],
+      "ts": 1795638536
+    },
+    {
+      "tokens": [
+        "doing",
+        "gold",
+        "here",
+        "one",
+        "play",
+        "something",
+        "strange",
+        "way"
+      ],
+      "ts": 1795638540
+    },
+    {
+      "tokens": [
+        "begins",
+        "daily",
+        "kalshi",
+        "markets",
+        "perps",
+        "prediction",
+        "top",
+        "trading",
+        "volume"
+      ],
+      "ts": 1795638544
+    },
+    {
+      "tokens": [
+        "hold",
+        "holiday",
+        "just",
+        "retail",
+        "season",
+        "taking",
+        "time",
+        "turnarounds"
+      ],
+      "ts": 1795638548
+    },
+    {
+      "tokens": [
+        "21shares",
+        "bitcoin",
+        "demand",
+        "driven",
+        "forced",
+        "liquidations",
+        "off",
+        "sell",
+        "weak"
+      ],
+      "ts": 1795638551
+    },
+    {
+      "tokens": [
+        "5",
+        "bitcoin",
+        "coldcard",
+        "flaw",
+        "missed",
+        "reveals",
+        "reviews",
+        "security",
+        "wallet",
+        "years"
+      ],
+      "ts": 1795638556
+    },
+    {
+      "tokens": [
+        "cftc",
+        "entry",
+        "firms",
+        "market",
+        "prediction",
+        "rules",
+        "seek",
+        "sets",
+        "us"
+      ],
+      "ts": 1795638561
+    },
+    {
+      "tokens": [
+        "got",
+        "him",
+        "huang",
+        "jensen",
+        "nvidia",
+        "rehired",
+        "reportedly",
+        "staff",
+        "tells",
+        "true",
+        "trump"
+      ],
+      "ts": 1795638565
+    },
+    {
+      "tokens": [
+        "americas",
+        "clock",
+        "contentious",
+        "law",
+        "most",
+        "running",
+        "spying"
+      ],
+      "ts": 1795638577
+    },
+    {
+      "tokens": [
+        "being",
+        "court",
+        "knee",
+        "minor",
+        "miss",
+        "sinner",
+        "surgery"
+      ],
+      "ts": 1795638580
+    },
+    {
+      "tokens": [
+        "huang",
+        "jensen",
+        "messages",
+        "mixed",
+        "teams",
+        "trump"
+      ],
+      "ts": 1795638584
     }
   ]
 }
