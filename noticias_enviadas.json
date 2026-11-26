@@ -48,179 +48,21 @@
     "https://theverge.com/tech/1041571/jensen-huang-all-hands-nvidia-apology": 1795638565,
     "https://theverge.com/policy/1041568/fisa-ndaa-blue-wave": 1795638577,
     "https://bbc.com/sport/tennis/articles/cxlylr3p4q8mo": 1795638580,
-    "https://cnn.com/2026/11/24/politics/trump-jensen-huang-nvidia-messaging": 1795638584
+    "https://cnn.com/2026/11/24/politics/trump-jensen-huang-nvidia-messaging": 1795638584,
+    "https://cnn.com/2026/11/25/middleeast/netanyahu-corruption-charges-legal-boost-intl": 1795723897,
+    "https://cnn.com/2026/11/25/politics/vance-jensen-huang-investigation": 1795723901,
+    "https://cnbc.com/2026/11/25/spacex-musk-trump-account-stock.html": 1795723905,
+    "https://cnbc.com/2026/11/25/bullish-hopes-spring-as-traders-bet-against-a-higher-vix-options-action-live.html": 1795723909,
+    "https://cnbc.com/2026/11/25/nvidias-billion-dollar-board-bet-whos-protected-as-lawsuits-mount.html": 1795723912,
+    "https://cointelegraph.com/news/ethereum-foundation-keccak-256-counter-quantum-ai-threats": 1795723916,
+    "https://cointelegraph.com/markets/us-inflation-rises-december-fed-meeting-clouding-crypto-outlook": 1795723919,
+    "https://cointelegraph.com/markets/bitcoin-falls-57k-us-tariff-pce-data-nasdaq-drops": 1795723923,
+    "https://theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers": 1795723927,
+    "https://theverge.com/ai-artificial-intelligence/1042243/impunity-maybe-not-good-for-business": 1795723930,
+    "https://bbc.com/sport/tennis/articles/cwm25m10ng20o": 1795723934,
+    "https://bbc.com/news/articles/ck9q8xp5r5pgo": 1795723937
   },
   "titulos": [
-    {
-      "tokens": [
-        "attacks",
-        "began",
-        "cnn",
-        "conflict",
-        "highest",
-        "hormuz",
-        "iranian",
-        "levels",
-        "since",
-        "strait"
-      ],
-      "ts": 1795448048
-    },
-    {
-      "tokens": [
-        "agree",
-        "away",
-        "climate",
-        "cnn",
-        "collapses",
-        "countries",
-        "fail",
-        "fossil",
-        "fuels",
-        "global",
-        "moving",
-        "summit"
-      ],
-      "ts": 1795448052
-    },
-    {
-      "tokens": [
-        "2027",
-        "affect",
-        "benefits",
-        "changes",
-        "keep",
-        "other",
-        "rising",
-        "security",
-        "social",
-        "you"
-      ],
-      "ts": 1795448055
-    },
-    {
-      "tokens": [
-        "000",
-        "26",
-        "323",
-        "earns",
-        "google",
-        "less",
-        "lives",
-        "minimum",
-        "old",
-        "wage",
-        "worker",
-        "year",
-        "yearbut"
-      ],
-      "ts": 1795448059
-    },
-    {
-      "tokens": [
-        "arabia",
-        "attacks",
-        "bahrain",
-        "deal",
-        "iran",
-        "open",
-        "remains",
-        "report",
-        "saudi"
-      ],
-      "ts": 1795448063
-    },
-    {
-      "tokens": [
-        "future",
-        "fx",
-        "institutional",
-        "liquidity",
-        "onchain",
-        "start",
-        "users"
-      ],
-      "ts": 1795448066
-    },
-    {
-      "tokens": [
-        "17k",
-        "bitcoin",
-        "briefly",
-        "drops",
-        "exchange",
-        "kraken",
-        "trades",
-        "upholds"
-      ],
-      "ts": 1795448070
-    },
-    {
-      "tokens": [
-        "bridge",
-        "cyber",
-        "exchanges",
-        "exploit",
-        "halt",
-        "korean",
-        "south",
-        "suspected",
-        "transfers"
-      ],
-      "ts": 1795448074
-    },
-    {
-      "tokens": [
-        "aircraft",
-        "combat",
-        "crewed",
-        "fighter",
-        "jet",
-        "last",
-        "next",
-        "raf"
-      ],
-      "ts": 1795448078
-    },
-    {
-      "tokens": [
-        "cheating",
-        "education",
-        "exam",
-        "korea",
-        "minister",
-        "resigns",
-        "scandal",
-        "south"
-      ],
-      "ts": 1795448081
-    },
-    {
-      "tokens": [
-        "delivers",
-        "football",
-        "frick",
-        "heavy",
-        "metal",
-        "promise"
-      ],
-      "ts": 1795448085
-    },
-    {
-      "tokens": [
-        "below",
-        "chaos",
-        "constant",
-        "far",
-        "he",
-        "level",
-        "my",
-        "russell",
-        "so",
-        "verstappen"
-      ],
-      "ts": 1795448089
-    },
     {
       "tokens": [
         "ahead",
@@ -724,6 +566,179 @@
         "trump"
       ],
       "ts": 1795638584
+    },
+    {
+      "tokens": [
+        "boost",
+        "case",
+        "casts",
+        "cnn",
+        "corruption",
+        "court",
+        "doubt",
+        "gets",
+        "legal",
+        "major",
+        "netanyahu"
+      ],
+      "ts": 1795723897
+    },
+    {
+      "tokens": [
+        "cnn",
+        "he",
+        "huang",
+        "investigation",
+        "politics",
+        "told",
+        "under",
+        "vance"
+      ],
+      "ts": 1795723901
+    },
+    {
+      "tokens": [
+        "accounts",
+        "active",
+        "donate",
+        "each",
+        "musk",
+        "pledge",
+        "share",
+        "spacex",
+        "trump"
+      ],
+      "ts": 1795723905
+    },
+    {
+      "tokens": [
+        "action",
+        "against",
+        "bet",
+        "bullish",
+        "higher",
+        "hopes",
+        "live",
+        "options",
+        "spring",
+        "traders",
+        "vix"
+      ],
+      "ts": 1795723909
+    },
+    {
+      "tokens": [
+        "bet",
+        "billion",
+        "board",
+        "dollar",
+        "lawsuits",
+        "mount",
+        "nvidias",
+        "protected",
+        "whos"
+      ],
+      "ts": 1795723912
+    },
+    {
+      "tokens": [
+        "256",
+        "ai",
+        "backs",
+        "counter",
+        "ethereum",
+        "foundation",
+        "keccak",
+        "quantum",
+        "threats"
+      ],
+      "ts": 1795723916
+    },
+    {
+      "tokens": [
+        "3",
+        "8",
+        "ahead",
+        "clouding",
+        "crypto",
+        "december",
+        "fed",
+        "inflation",
+        "meeting",
+        "outlook",
+        "rises",
+        "us"
+      ],
+      "ts": 1795723919
+    },
+    {
+      "tokens": [
+        "4",
+        "57k",
+        "bitcoin",
+        "data",
+        "drops",
+        "falls",
+        "fears",
+        "hot",
+        "nasdaq",
+        "pce",
+        "tariff",
+        "toward",
+        "us"
+      ],
+      "ts": 1795723923
+    },
+    {
+      "tokens": [
+        "1",
+        "center",
+        "data",
+        "fcc",
+        "million",
+        "off",
+        "plan",
+        "put",
+        "satellites",
+        "signs",
+        "space",
+        "spacexs"
+      ],
+      "ts": 1795723927
+    },
+    {
+      "tokens": [
+        "business",
+        "good",
+        "impunity",
+        "maybe"
+      ],
+      "ts": 1795723930
+    },
+    {
+      "tokens": [
+        "ending",
+        "gb",
+        "partnership",
+        "patten",
+        "ranked",
+        "ruthless",
+        "top"
+      ],
+      "ts": 1795723934
+    },
+    {
+      "tokens": [
+        "airfield",
+        "five",
+        "hit",
+        "jets",
+        "military",
+        "russian",
+        "strike",
+        "ukraine"
+      ],
+      "ts": 1795723937
     }
   ]
 }
