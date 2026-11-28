@@ -72,179 +72,21 @@
     "https://theverge.com/games/1043169/rockstar-games-union-vote-iwgb": 1795809475,
     "https://theverge.com/ai-artificial-intelligence/1043107/florida-man-imprisoned-for-using-ai-to-impersonate-a-streamer-in-a-crypto-scam": 1795809478,
     "https://bbc.com/sport/football/articles/c6jd7yxrjeepo": 1795809483,
-    "https://bbc.com/news/articles/c6gre92qxvn4o": 1795809486
+    "https://bbc.com/news/articles/c6gre92qxvn4o": 1795809486,
+    "https://cnn.com/2026/11/27/business/oil-prices-rising-intl": 1795892278,
+    "https://cnn.com/2026/11/27/world/putin-lukashenko-ukraine-russia-mongolia-intl": 1795892282,
+    "https://cnbc.com/2026/11/27/eu-budget-2028-2034-deadlock.html": 1795892286,
+    "https://cnbc.com/2026/11/27/new-car-buying-deals-buying-tips.html": 1795892293,
+    "https://cnbc.com/make-it/2026/11/27/durable-goods-reliability-cars-appliances-tvs.html": 1795892297,
+    "https://cointelegraph.com/news/china-march-2027-rollout-blockchain-identity-regulations": 1795892301,
+    "https://cointelegraph.com/markets/bitcoin-price-below-59k-anthropic-tech-stock-rebound": 1795892304,
+    "https://cointelegraph.com/news/what-was-coinbase-worth-while-nasdaq-was-closed": 1795892308,
+    "https://theverge.com/gadgets/1043935/best-black-friday-apple-deals-2026": 1795892312,
+    "https://theverge.com/gadgets/1042512/best-black-friday-laptop-notebook-deals-2026": 1795892316,
+    "https://cnn.com/2026/11/27/health/beef-liver-organ-supplements-wellness": 1795892320,
+    "https://cnn.com/2026/11/27/middleeast/iraq-kurdish-trump-al-zaidi-intl": 1795892324
   },
   "titulos": [
-    {
-      "tokens": [
-        "authorities",
-        "flog",
-        "hijab",
-        "iranian",
-        "lawyers",
-        "performed",
-        "say",
-        "singer",
-        "without"
-      ],
-      "ts": 1795554708
-    },
-    {
-      "tokens": [
-        "convinced",
-        "donald",
-        "he",
-        "huang",
-        "jensen",
-        "nvidia",
-        "reinstate",
-        "trump"
-      ],
-      "ts": 1795554712
-    },
-    {
-      "tokens": [
-        "address",
-        "fed",
-        "higher",
-        "indicates",
-        "inflation",
-        "interest",
-        "john",
-        "likely",
-        "rates",
-        "time",
-        "williams"
-      ],
-      "ts": 1795554716
-    },
-    {
-      "tokens": [
-        "ai",
-        "do",
-        "investors",
-        "now",
-        "nvidia",
-        "should",
-        "stock",
-        "surge",
-        "trade"
-      ],
-      "ts": 1795554720
-    },
-    {
-      "tokens": [
-        "bessents",
-        "china",
-        "face",
-        "heres",
-        "huang",
-        "jensen",
-        "peterson",
-        "reveals",
-        "trump"
-      ],
-      "ts": 1795554724
-    },
-    {
-      "tokens": [
-        "1",
-        "1b",
-        "binance",
-        "crypto",
-        "hack",
-        "korea",
-        "linked",
-        "north",
-        "recover",
-        "seeks",
-        "stolen",
-        "us"
-      ],
-      "ts": 1795554727
-    },
-    {
-      "tokens": [
-        "dispute",
-        "gambling",
-        "kalshi",
-        "law",
-        "secures",
-        "temporary",
-        "win",
-        "york"
-      ],
-      "ts": 1795554731
-    },
-    {
-      "tokens": [
-        "44m",
-        "btcs",
-        "debt",
-        "defi",
-        "downturn",
-        "eth",
-        "market",
-        "offloads",
-        "reduce"
-      ],
-      "ts": 1795554734
-    },
-    {
-      "tokens": [
-        "ai",
-        "another",
-        "centers",
-        "chaotic",
-        "climate",
-        "data",
-        "talks",
-        "throw",
-        "un",
-        "wrench"
-      ],
-      "ts": 1795554741
-    },
-    {
-      "tokens": [
-        "applauds",
-        "better",
-        "ceo",
-        "hell",
-        "his",
-        "huang",
-        "jensen",
-        "return",
-        "staff"
-      ],
-      "ts": 1795554746
-    },
-    {
-      "tokens": [
-        "genocide",
-        "leaders",
-        "military",
-        "myanmar",
-        "rohingya",
-        "ruling",
-        "sanctions",
-        "top",
-        "uk"
-      ],
-      "ts": 1795554749
-    },
-    {
-      "tokens": [
-        "libya",
-        "russian",
-        "ship",
-        "spread",
-        "strike",
-        "ukraine",
-        "war"
-      ],
-      "ts": 1795554753
-    },
     {
       "tokens": [
         "cnn",
@@ -745,6 +587,172 @@
         "tigers"
       ],
       "ts": 1795809486
+    },
+    {
+      "tokens": [
+        "again",
+        "business",
+        "cnn",
+        "heres",
+        "oil",
+        "prices",
+        "rising"
+      ],
+      "ts": 1795892278
+    },
+    {
+      "tokens": [
+        "ally",
+        "biggest",
+        "claim",
+        "cnn",
+        "invasion",
+        "justify",
+        "key",
+        "putins",
+        "questions",
+        "russia",
+        "ukraine",
+        "uses"
+      ],
+      "ts": 1795892282
+    },
+    {
+      "tokens": [
+        "1",
+        "7",
+        "break",
+        "budget",
+        "deadlock",
+        "eu",
+        "fail",
+        "leaders",
+        "mounts",
+        "political",
+        "pressure",
+        "trillion"
+      ],
+      "ts": 1795892286
+    },
+    {
+      "tokens": [
+        "car",
+        "deals",
+        "here",
+        "high",
+        "look",
+        "prices",
+        "record",
+        "where"
+      ],
+      "ts": 1795892293
+    },
+    {
+      "tokens": [
+        "cars",
+        "durable",
+        "getting",
+        "glitching",
+        "goods",
+        "just",
+        "less",
+        "reliable",
+        "smart",
+        "sputtering",
+        "tvs",
+        "you"
+      ],
+      "ts": 1795892297
+    },
+    {
+      "tokens": [
+        "2027",
+        "blockchain",
+        "china",
+        "identity",
+        "march",
+        "regulations",
+        "rollout",
+        "sets"
+      ],
+      "ts": 1795892301
+    },
+    {
+      "tokens": [
+        "59k",
+        "anthropic",
+        "below",
+        "bitcoin",
+        "drops",
+        "joins",
+        "price",
+        "rebound",
+        "stock",
+        "tech"
+      ],
+      "ts": 1795892304
+    },
+    {
+      "tokens": [
+        "closed",
+        "coinbase",
+        "nasdaq",
+        "while",
+        "worth"
+      ],
+      "ts": 1795892308
+    },
+    {
+      "tokens": [
+        "airpods",
+        "apple",
+        "best",
+        "black",
+        "deals",
+        "friday",
+        "gear",
+        "macbooks",
+        "other"
+      ],
+      "ts": 1795892312
+    },
+    {
+      "tokens": [
+        "black",
+        "buying",
+        "deals",
+        "friday",
+        "help",
+        "laptop",
+        "now",
+        "right",
+        "rough",
+        "these"
+      ],
+      "ts": 1795892316
+    },
+    {
+      "tokens": [
+        "cnn",
+        "cow",
+        "dried",
+        "freeze",
+        "organs",
+        "people",
+        "swallowing"
+      ],
+      "ts": 1795892320
+    },
+    {
+      "tokens": [
+        "behind",
+        "cnn",
+        "iraq",
+        "post",
+        "trumps",
+        "whats"
+      ],
+      "ts": 1795892324
     }
   ]
 }
